@@ -1,109 +1,19 @@
-# Zomfield
+# RPG Pixel Game
 
-Game **survival zombie 2D pixel-art multiplayer** dengan simulasi yang diatur penuh oleh server (server-authoritative). Repo ini berisi dua game berbasis browser:
+**MMORPG 2D pixel-art online berbasis browser.** Dunia dan semua perhitungan game dijalankan oleh server (server-authoritative), sehingga banyak pemain bisa bermain bersama secara real-time lewat WebSocket.
 
-| Game | Folder | Port default | Perintah |
-|------|--------|--------------|----------|
-| **Zomfield**: survival zombie | `server/`, `public/`, `data/` | `3000` | `npm start` |
-| **MMORPG**: RPG online | `mmorpg/` | `3100` | `npm run start:mmorpg` |
+## Fitur
 
-## Persyaratan
-
-- [Node.js](https://nodejs.org/) versi 18 atau lebih baru
-- npm (sudah termasuk bersama Node.js)
-
-## Cara Memulai
-
-```bash
-# 1. Clone repo
-git clone <url-repo-kamu>.git
-cd zomfield
-
-# 2. Install dependensi
-npm install
-
-# 3a. Jalankan Zomfield (game zombie)
-npm start
-
-# 3b. ATAU jalankan MMORPG
-npm run start:mmorpg
-```
-
-Setelah server berjalan, buka browser ke:
-
-- Zomfield: http://localhost:3000
-- MMORPG: http://localhost:3100
-
-Lalu masukkan nama (Zomfield) atau buat akun/login (MMORPG) dan mulai bermain. Untuk bermain bersama teman di jaringan yang sama, buka `http://<IP-komputer-host>:<port>`.
-
-### Opsi Server
-
-```bash
-# Ganti port
-PORT=8080 npm start            # Linux/macOS
-set PORT=8080 && npm start     # Windows (cmd)
-
-# Aktifkan mode wave (Zomfield)
-npm start -- --waves
-WAVES=1 npm start              # Linux/macOS
-```
-
-Cek status server lewat endpoint `/status` (contoh: http://localhost:3000/status).
-
----
-
-## Zomfield: Survival Zombie
-
-Bertahanlah di dunia penuh zombie bersama pemain lain (maksimal 16 pemain). Cari loot, kumpulkan bahan, buat senjata, dan bangun pertahanan.
-
-### Fitur
-
-- Multiplayer real-time lewat WebSocket, simulasi dijalankan di server
-- Siklus siang dan malam: malam lebih gelap, jarak pandang menyempit
-- Sistem bertahan hidup: lapar, haus, stamina, dan pendarahan
-- Inventori 24 slot, loot, dan crafting
-- Membangun struktur pertahanan (termasuk gerbang) dan memperbaikinya
-- Berbagai jenis zombie
-- **Mode Wave** (opsional): gelombang zombie yang makin kuat, dengan hadiah per wave dan boss berkala
-
-### Kontrol
-
-| Tombol | Fungsi |
-|--------|--------|
-| `W A S D` / Panah | Bergerak |
-| `Shift` | Lari (sprint, memakai stamina) |
-| Klik kiri | Menyerang (atau menaruh bangunan saat mode build) |
-| Klik kanan | Batalkan bangunan yang dipilih |
-| `1`-`9` / Scroll mouse | Pilih slot hotbar |
-| `R` | Reload |
-| `F` | Pakai item terpilih (makanan, minuman, medis) |
-| `E` | Ambil loot terdekat |
-| `Z` | Buang item terpilih |
-| `Tab` | Buka/tutup inventori |
-| `C` | Panel crafting |
-| `B` | Panel membangun |
-| `G` | Buka/tutup gerbang terdekat |
-| `X` | Perbaiki bangunan yang rusak |
-| `V` | Bongkar bangunan milikmu |
-| `Esc` | Tutup panel / batalkan build |
-
----
-
-## MMORPG
-
-RPG online dengan dunia luas 7200x7200, hingga 100 pemain, quest, NPC, monster, dan raid boss. Progres akun tersimpan otomatis di server.
-
-### Fitur
-
-- Sistem akun (daftar dan login) dengan penyimpanan otomatis
-- 5 kelas, masing-masing dengan 3 skill
+- Sistem akun (daftar dan login) dengan penyimpanan progres otomatis di server
+- 5 kelas, masing-masing punya 3 skill: Prajurit, Penyihir, Pemanah, Pendeta, Pembunuh
+- Dunia luas 7200x7200, hingga 100 pemain sekaligus
 - Level maksimal 50
 - Quest, NPC, toko, dan item
-- Monster dan **raid boss** dengan hadiah kontribusi
+- Monster dan **raid boss** dengan hadiah berdasarkan kontribusi
 - Chat antar pemain
 - Siklus siang dan malam
 
-### Kelas
+## Kelas
 
 | Kelas | Peran |
 |-------|-------|
@@ -113,7 +23,40 @@ RPG online dengan dunia luas 7200x7200, hingga 100 pemain, quest, NPC, monster, 
 | Pendeta | Penyembuh party, juga bisa menyerang dengan sihir suci |
 | Pembunuh | Serangan cepat dengan kritikal mematikan |
 
-### Kontrol
+## Persyaratan
+
+- [Node.js](https://nodejs.org/) (disarankan versi LTS terbaru)
+- npm (sudah termasuk bersama Node.js)
+
+## Cara Memulai
+
+```bash
+# 1. Clone repo
+git clone https://github.com/herdodp/RPG-pixel-game.git
+cd RPG-pixel-game
+
+# 2. Install dependensi
+npm install
+
+# 3. Jalankan server
+npm start
+```
+
+Buka browser ke **http://localhost:3100**, buat akun baru, pilih kelas, lalu mulai bermain.
+
+Untuk bermain bersama teman di jaringan yang sama, buka `http://<IP-komputer-host>:3100`.
+
+### Opsi Server
+
+```bash
+# Ganti port (default 3100)
+PORT=8080 npm start            # Linux/macOS
+set PORT=8080 && npm start     # Windows (cmd)
+```
+
+Cek status server lewat `http://localhost:3100/status`.
+
+## Kontrol
 
 | Tombol | Fungsi |
 |--------|--------|
@@ -134,32 +77,23 @@ RPG online dengan dunia luas 7200x7200, hingga 100 pemain, quest, NPC, monster, 
 | `Enter` | Buka chat / kirim pesan |
 | `Esc` | Tutup jendela |
 
----
-
 ## Struktur Proyek
 
 ```
-zomfield/
-â”œâ”€â”€ server/        # Server game zombie (logika game, zombie, loot, wave, dll.)
-â”œâ”€â”€ public/        # Client game zombie (HTML + JS canvas)
-â”œâ”€â”€ data/          # Data game zombie (senjata, zombie, resep, loot, config)
+RPG-pixel-game/
 â”œâ”€â”€ mmorpg/
-â”‚   â”œâ”€â”€ server/    # Server MMORPG
-â”‚   â”œâ”€â”€ public/    # Client MMORPG
+â”‚   â”œâ”€â”€ server/    # Logika server (game, dunia, karakter, combat, monster, boss)
+â”‚   â”œâ”€â”€ public/    # Client browser (HTML + JS canvas)
 â”‚   â”œâ”€â”€ data/      # Kelas, item, monster, boss, quest, NPC, config
 â”‚   â””â”€â”€ save/      # Data akun pemain (tidak ikut di-push)
-â”œâ”€â”€ test/          # Smoke test
 â””â”€â”€ package.json
 ```
 
 ## Konfigurasi
 
-Pengaturan gameplay bisa diubah lewat file JSON tanpa menyentuh kode:
+Pengaturan game bisa diubah lewat `mmorpg/data/config.json` tanpa menyentuh kode: port, ukuran dunia, kecepatan, XP, level maksimal, jumlah pemain, pengaturan raid, dan lainnya.
 
-- Zomfield: `data/config.json` (port, jumlah pemain, kecepatan, laju lapar/haus, wave, dll.)
-- MMORPG: `mmorpg/data/config.json` (port, ukuran dunia, XP, level maksimal, raid, dll.)
-
-Untuk mengecek sintaks tanpa menjalankan server: `npm run check` atau `npm run check:mmorpg`.
+Untuk mengecek sintaks tanpa menjalankan server: `npm run check`.
 
 ## Teknologi
 

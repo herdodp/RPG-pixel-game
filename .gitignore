@@ -3,7 +3,12 @@ node_modules/
 
 # Data akun pemain MMORPG (jangan di-push)
 mmorpg/save/*.json
-!mmorpg/save/.gitkeep
+
+# Game zombie (tidak dipublikasikan di repo ini)
+/data/
+/public/
+/server/
+/test/
 
 # Log & environment
 *.log
