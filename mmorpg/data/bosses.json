@@ -1,0 +1,43 @@
+{
+  "bosses": {
+    "king_slime": {
+      "name": "Raja Slime", "level": 12, "hp": 12000, "def": 12, "speed": 26, "radius": 28, "color": "#3fae5a", "shape": "slime",
+      "zone": "meadow", "pos": { "x": 2400, "y": 2700 }, "respawnSec": 600, "aggro": 320, "leash": 700, "xp": 6000, "gold": [400, 700],
+      "phases": [
+        { "hpPct": 1.0, "atk": 30, "attackCdMs": 1800, "range": 44, "skills": [ { "id": "slam", "name": "Hantaman Lendir", "type": "aoe_self", "radius": 90, "mult": 1.5, "cdMs": 6000, "telegraphMs": 900 } ] },
+        { "hpPct": 0.5, "atk": 42, "attackCdMs": 1400, "range": 44, "skills": [ { "id": "slam", "name": "Hantaman Lendir", "type": "aoe_self", "radius": 110, "mult": 1.7, "cdMs": 5000, "telegraphMs": 800 }, { "id": "split", "name": "Panggil Anak Slime", "type": "summon", "monster": "slime_blue", "count": 4, "cdMs": 15000, "telegraphMs": 600 } ] }
+      ],
+      "drops": [ { "item": "hp_potion_m", "chance": 1.0, "min": 3, "max": 6 }, { "item": "sword_iron", "chance": 0.35, "min": 1, "max": 1 }, { "item": "staff_oak", "chance": 0.35, "min": 1, "max": 1 }, { "item": "bow_hunter", "chance": 0.35, "min": 1, "max": 1 }, { "item": "ring_silver", "chance": 0.2, "min": 1, "max": 1 } ]
+    },
+    "alpha_wolf": {
+      "name": "Alfa Serigala Kegelapan", "level": 22, "hp": 45000, "def": 24, "speed": 70, "radius": 20, "color": "#4a4f5c", "shape": "beast",
+      "zone": "forest", "pos": { "x": 900, "y": 2600 }, "respawnSec": 900, "aggro": 360, "leash": 800, "xp": 22000, "gold": [900, 1500],
+      "phases": [
+        { "hpPct": 1.0, "atk": 70, "attackCdMs": 1200, "range": 34, "skills": [ { "id": "howl", "name": "Lolongan Gelap", "type": "aoe_self", "radius": 130, "mult": 1.3, "cdMs": 7000, "telegraphMs": 900 } ] },
+        { "hpPct": 0.6, "atk": 90, "attackCdMs": 1000, "range": 34, "skills": [ { "id": "howl", "name": "Lolongan Gelap", "type": "aoe_self", "radius": 150, "mult": 1.5, "cdMs": 6000, "telegraphMs": 800 }, { "id": "pack", "name": "Panggil Kawanan", "type": "summon", "monster": "wolf", "count": 4, "cdMs": 18000, "telegraphMs": 600 } ] },
+        { "hpPct": 0.25, "atk": 120, "attackCdMs": 800, "range": 34, "skills": [ { "id": "howl", "name": "Lolongan Gelap", "type": "aoe_self", "radius": 170, "mult": 1.8, "cdMs": 4500, "telegraphMs": 700 } ] }
+      ],
+      "drops": [ { "item": "hp_potion_l", "chance": 1.0, "min": 3, "max": 5 }, { "item": "sword_steel", "chance": 0.3, "min": 1, "max": 1 }, { "item": "dagger_viper", "chance": 0.3, "min": 1, "max": 1 }, { "item": "helm_knight", "chance": 0.3, "min": 1, "max": 1 }, { "item": "armor_chain", "chance": 0.3, "min": 1, "max": 1 }, { "item": "boots_swift", "chance": 0.3, "min": 1, "max": 1 } ]
+    },
+    "crystal_titan": {
+      "name": "Titan Kristal", "level": 34, "hp": 140000, "def": 50, "speed": 32, "radius": 34, "color": "#8a7fd0", "shape": "golem",
+      "zone": "cave", "pos": { "x": 3800, "y": 2300 }, "respawnSec": 1200, "aggro": 380, "leash": 900, "xp": 80000, "gold": [2000, 3500],
+      "phases": [
+        { "hpPct": 1.0, "atk": 140, "attackCdMs": 1700, "range": 52, "skills": [ { "id": "quake", "name": "Gempa Kristal", "type": "aoe_self", "radius": 150, "mult": 1.6, "cdMs": 7000, "telegraphMs": 1000 } ] },
+        { "hpPct": 0.6, "atk": 170, "attackCdMs": 1400, "range": 52, "skills": [ { "id": "quake", "name": "Gempa Kristal", "type": "aoe_self", "radius": 180, "mult": 1.9, "cdMs": 6000, "telegraphMs": 900 }, { "id": "shards", "name": "Hujan Pecahan", "type": "aoe_target", "radius": 90, "mult": 2.2, "cdMs": 8000, "telegraphMs": 1100 } ] },
+        { "hpPct": 0.3, "atk": 220, "attackCdMs": 1100, "range": 52, "skills": [ { "id": "quake", "name": "Gempa Kristal", "type": "aoe_self", "radius": 210, "mult": 2.2, "cdMs": 5000, "telegraphMs": 800 }, { "id": "shards", "name": "Hujan Pecahan", "type": "aoe_target", "radius": 110, "mult": 2.6, "cdMs": 6000, "telegraphMs": 900 }, { "id": "guards", "name": "Panggil Penjaga", "type": "summon", "monster": "golem", "count": 2, "cdMs": 25000, "telegraphMs": 700 } ] }
+      ],
+      "drops": [ { "item": "hp_potion_l", "chance": 1.0, "min": 4, "max": 8 }, { "item": "mp_potion_l", "chance": 1.0, "min": 3, "max": 6 }, { "item": "sword_flame", "chance": 0.25, "min": 1, "max": 1 }, { "item": "staff_frost", "chance": 0.25, "min": 1, "max": 1 }, { "item": "bow_storm", "chance": 0.25, "min": 1, "max": 1 }, { "item": "dagger_shadow", "chance": 0.25, "min": 1, "max": 1 }, { "item": "ring_gold", "chance": 0.3, "min": 1, "max": 1 }, { "item": "dragon_scale", "chance": 0.4, "min": 1, "max": 2 } ]
+    },
+    "frost_dragon": {
+      "name": "Naga Es Purba", "level": 48, "hp": 420000, "def": 80, "speed": 44, "radius": 42, "color": "#9fd4ff", "shape": "dragon",
+      "zone": "tundra", "pos": { "x": 2600, "y": 700 }, "respawnSec": 1800, "aggro": 420, "leash": 1000, "xp": 300000, "gold": [6000, 9000],
+      "phases": [
+        { "hpPct": 1.0, "atk": 240, "attackCdMs": 1500, "range": 60, "skills": [ { "id": "breath", "name": "Napas Beku", "type": "aoe_self", "radius": 190, "mult": 1.5, "cdMs": 7000, "telegraphMs": 1000 }, { "id": "nova", "name": "Nova Es", "type": "aoe_target", "radius": 100, "mult": 2.0, "cdMs": 6000, "telegraphMs": 1000 } ] },
+        { "hpPct": 0.65, "atk": 300, "attackCdMs": 1300, "range": 60, "skills": [ { "id": "breath", "name": "Napas Beku", "type": "aoe_self", "radius": 230, "mult": 1.8, "cdMs": 6000, "telegraphMs": 900 }, { "id": "nova", "name": "Nova Es", "type": "aoe_target", "radius": 120, "mult": 2.4, "cdMs": 5000, "telegraphMs": 900 }, { "id": "wolves", "name": "Panggil Serigala Salju", "type": "summon", "monster": "ice_wolf", "count": 4, "cdMs": 20000, "telegraphMs": 600 } ] },
+        { "hpPct": 0.3, "atk": 380, "attackCdMs": 1000, "range": 60, "skills": [ { "id": "breath", "name": "Napas Beku", "type": "aoe_self", "radius": 270, "mult": 2.1, "cdMs": 5000, "telegraphMs": 800 }, { "id": "nova", "name": "Nova Es", "type": "aoe_target", "radius": 140, "mult": 2.8, "cdMs": 4000, "telegraphMs": 800 }, { "id": "giants", "name": "Panggil Raksasa", "type": "summon", "monster": "frost_giant", "count": 2, "cdMs": 28000, "telegraphMs": 700 } ] }
+      ],
+      "drops": [ { "item": "hp_potion_l", "chance": 1.0, "min": 6, "max": 10 }, { "item": "mp_potion_l", "chance": 1.0, "min": 6, "max": 10 }, { "item": "sword_dragon", "chance": 0.2, "min": 1, "max": 1 }, { "item": "staff_arch", "chance": 0.2, "min": 1, "max": 1 }, { "item": "bow_sky", "chance": 0.2, "min": 1, "max": 1 }, { "item": "dagger_void", "chance": 0.2, "min": 1, "max": 1 }, { "item": "ring_dragon", "chance": 0.25, "min": 1, "max": 1 }, { "item": "helm_dragon", "chance": 0.3, "min": 1, "max": 1 }, { "item": "armor_dragon", "chance": 0.3, "min": 1, "max": 1 }, { "item": "boots_dragon", "chance": 0.3, "min": 1, "max": 1 }, { "item": "dragon_scale", "chance": 1.0, "min": 3, "max": 6 } ]
+    }
+  }
+}

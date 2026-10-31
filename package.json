@@ -1,0 +1,16 @@
+{
+  "name": "zomfield",
+  "version": "0.1.0",
+  "description": "2D pixel-art multiplayer zombie survival game with a server-authoritative simulation",
+  "private": true,
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "check": "node --check server/index.js",
+    "start:mmorpg": "node mmorpg/server/index.js",
+    "check:mmorpg": "node --check mmorpg/server/index.js && node --check mmorpg/public/client.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Data akun pemain MMORPG (jangan di-push)
+mmorpg/save/*.json
+!mmorpg/save/.gitkeep
+
+# Log & environment
+*.log
+npm-debug.log*
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

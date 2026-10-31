@@ -1,0 +1,57 @@
+{
+  "world": { "width": 3200, "height": 3200, "tileSize": 32 },
+  "population": {
+    "globalMax": 120,
+    "perPlayerMax": 14,
+    "respawnDelayMs": 20000,
+    "spawnIntervalMs": 2000,
+    "despawnDistance": 900
+  },
+  "safeSpawn": {
+    "minDistanceFromPlayer": 260,
+    "maxDistanceFromPlayer": 700,
+    "avoidStructureRadius": 80
+  },
+  "night": {
+    "spawnRateMultiplier": 2.5,
+    "maxMultiplier": 1.6
+  },
+  "zones": [
+    {
+      "id": "outskirts",
+      "name": "Outskirts",
+      "rect": { "x": 0, "y": 0, "w": 3200, "h": 3200 },
+      "density": 0.3,
+      "maxZombies": 40,
+      "dayTypes": { "normal": 0.8, "runner": 0.2 },
+      "nightTypes": { "normal": 0.55, "runner": 0.25, "night": 0.2 }
+    },
+    {
+      "id": "town",
+      "name": "Abandoned Town",
+      "rect": { "x": 1200, "y": 1200, "w": 800, "h": 800 },
+      "density": 1.0,
+      "maxZombies": 45,
+      "dayTypes": { "normal": 0.65, "runner": 0.3, "tank": 0.05 },
+      "nightTypes": { "normal": 0.4, "runner": 0.25, "tank": 0.1, "night": 0.25 }
+    },
+    {
+      "id": "forest",
+      "name": "Dark Forest",
+      "rect": { "x": 200, "y": 2200, "w": 1000, "h": 900 },
+      "density": 0.6,
+      "maxZombies": 30,
+      "dayTypes": { "normal": 0.9, "runner": 0.1 },
+      "nightTypes": { "normal": 0.4, "runner": 0.2, "night": 0.4 }
+    },
+    {
+      "id": "military",
+      "name": "Military Zone",
+      "rect": { "x": 2300, "y": 200, "w": 700, "h": 700 },
+      "density": 0.8,
+      "maxZombies": 25,
+      "dayTypes": { "normal": 0.5, "runner": 0.2, "tank": 0.3 },
+      "nightTypes": { "normal": 0.3, "runner": 0.2, "tank": 0.25, "night": 0.25 }
+    }
+  ]
+}

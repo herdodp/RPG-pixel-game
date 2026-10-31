@@ -1,0 +1,68 @@
+{
+  "rarities": {
+    "common": { "name": "Biasa", "color": "#c8c8c8", "mul": 1.0 },
+    "uncommon": { "name": "Bagus", "color": "#5ec26a", "mul": 1.2 },
+    "rare": { "name": "Langka", "color": "#4a90e2", "mul": 1.5 },
+    "epic": { "name": "Epik", "color": "#b45fe0", "mul": 1.9 },
+    "legendary": { "name": "Legendaris", "color": "#f39c12", "mul": 2.5 }
+  },
+  "items": {
+    "hp_potion_s": { "name": "Ramuan HP Kecil", "type": "consumable", "stack": 99, "price": 15, "effect": { "hp": 60 }, "cooldownMs": 2000, "rarity": "common" },
+    "hp_potion_m": { "name": "Ramuan HP Sedang", "type": "consumable", "stack": 99, "price": 50, "effect": { "hp": 200 }, "cooldownMs": 2000, "rarity": "uncommon" },
+    "hp_potion_l": { "name": "Ramuan HP Besar", "type": "consumable", "stack": 99, "price": 150, "effect": { "hp": 600 }, "cooldownMs": 2000, "rarity": "rare" },
+    "mp_potion_s": { "name": "Ramuan MP Kecil", "type": "consumable", "stack": 99, "price": 18, "effect": { "mp": 40 }, "cooldownMs": 2000, "rarity": "common" },
+    "mp_potion_m": { "name": "Ramuan MP Sedang", "type": "consumable", "stack": 99, "price": 60, "effect": { "mp": 130 }, "cooldownMs": 2000, "rarity": "uncommon" },
+    "mp_potion_l": { "name": "Ramuan MP Besar", "type": "consumable", "stack": 99, "price": 170, "effect": { "mp": 400 }, "cooldownMs": 2000, "rarity": "rare" },
+
+    "slime_gel": { "name": "Lendir Slime", "type": "material", "stack": 99, "price": 4, "rarity": "common" },
+    "wolf_fang": { "name": "Taring Serigala", "type": "material", "stack": 99, "price": 9, "rarity": "common" },
+    "bone_shard": { "name": "Serpihan Tulang", "type": "material", "stack": 99, "price": 14, "rarity": "common" },
+    "cave_crystal": { "name": "Kristal Gua", "type": "material", "stack": 99, "price": 30, "rarity": "uncommon" },
+    "frost_core": { "name": "Inti Es", "type": "material", "stack": 99, "price": 60, "rarity": "rare" },
+    "dragon_scale": { "name": "Sisik Naga", "type": "material", "stack": 99, "price": 400, "rarity": "epic" },
+
+    "sword_wood": { "name": "Pedang Kayu", "type": "equip", "slot": "weapon", "weaponType": "sword", "reqLevel": 1, "price": 40, "rarity": "common", "stats": { "atk": 5 } },
+    "sword_iron": { "name": "Pedang Besi", "type": "equip", "slot": "weapon", "weaponType": "sword", "reqLevel": 8, "price": 300, "rarity": "uncommon", "stats": { "atk": 16 } },
+    "sword_steel": { "name": "Pedang Baja", "type": "equip", "slot": "weapon", "weaponType": "sword", "reqLevel": 18, "price": 1400, "rarity": "rare", "stats": { "atk": 38, "crit": 0.02 } },
+    "sword_flame": { "name": "Pedang Api Abadi", "type": "equip", "slot": "weapon", "weaponType": "sword", "reqLevel": 30, "price": 6000, "rarity": "epic", "stats": { "atk": 78, "crit": 0.04 } },
+    "sword_dragon": { "name": "Pedang Penakluk Naga", "type": "equip", "slot": "weapon", "weaponType": "sword", "reqLevel": 42, "price": 30000, "rarity": "legendary", "stats": { "atk": 140, "crit": 0.06 } },
+
+    "staff_wood": { "name": "Tongkat Ranting", "type": "equip", "slot": "weapon", "weaponType": "staff", "reqLevel": 1, "price": 40, "rarity": "common", "stats": { "matk": 5, "mp": 10 } },
+    "staff_oak": { "name": "Tongkat Ek", "type": "equip", "slot": "weapon", "weaponType": "staff", "reqLevel": 8, "price": 300, "rarity": "uncommon", "stats": { "matk": 16, "mp": 30 } },
+    "staff_crystal": { "name": "Tongkat Kristal", "type": "equip", "slot": "weapon", "weaponType": "staff", "reqLevel": 18, "price": 1400, "rarity": "rare", "stats": { "matk": 38, "mp": 70 } },
+    "staff_frost": { "name": "Tongkat Es Abadi", "type": "equip", "slot": "weapon", "weaponType": "staff", "reqLevel": 30, "price": 6000, "rarity": "epic", "stats": { "matk": 78, "mp": 140, "crit": 0.03 } },
+    "staff_arch": { "name": "Tongkat Arkanis", "type": "equip", "slot": "weapon", "weaponType": "staff", "reqLevel": 42, "price": 30000, "rarity": "legendary", "stats": { "matk": 140, "mp": 260, "crit": 0.05 } },
+
+    "bow_short": { "name": "Busur Pendek", "type": "equip", "slot": "weapon", "weaponType": "bow", "reqLevel": 1, "price": 40, "rarity": "common", "stats": { "atk": 5 } },
+    "bow_hunter": { "name": "Busur Pemburu", "type": "equip", "slot": "weapon", "weaponType": "bow", "reqLevel": 8, "price": 300, "rarity": "uncommon", "stats": { "atk": 16, "crit": 0.01 } },
+    "bow_long": { "name": "Busur Panjang", "type": "equip", "slot": "weapon", "weaponType": "bow", "reqLevel": 18, "price": 1400, "rarity": "rare", "stats": { "atk": 38, "crit": 0.03 } },
+    "bow_storm": { "name": "Busur Badai", "type": "equip", "slot": "weapon", "weaponType": "bow", "reqLevel": 30, "price": 6000, "rarity": "epic", "stats": { "atk": 78, "crit": 0.05 } },
+    "bow_sky": { "name": "Busur Penembus Langit", "type": "equip", "slot": "weapon", "weaponType": "bow", "reqLevel": 42, "price": 30000, "rarity": "legendary", "stats": { "atk": 140, "crit": 0.08 } },
+
+    "dagger_rusty": { "name": "Belati Berkarat", "type": "equip", "slot": "weapon", "weaponType": "dagger", "reqLevel": 1, "price": 40, "rarity": "common", "stats": { "atk": 5 } },
+    "dagger_steel": { "name": "Belati Baja", "type": "equip", "slot": "weapon", "weaponType": "dagger", "reqLevel": 8, "price": 300, "rarity": "uncommon", "stats": { "atk": 15, "crit": 0.02 } },
+    "dagger_viper": { "name": "Belati Ular", "type": "equip", "slot": "weapon", "weaponType": "dagger", "reqLevel": 18, "price": 1400, "rarity": "rare", "stats": { "atk": 35, "crit": 0.05 } },
+    "dagger_shadow": { "name": "Belati Bayangan", "type": "equip", "slot": "weapon", "weaponType": "dagger", "reqLevel": 30, "price": 6000, "rarity": "epic", "stats": { "atk": 72, "crit": 0.08 } },
+    "dagger_void": { "name": "Belati Kehampaan", "type": "equip", "slot": "weapon", "weaponType": "dagger", "reqLevel": 42, "price": 30000, "rarity": "legendary", "stats": { "atk": 130, "crit": 0.12 } },
+
+    "helm_cloth": { "name": "Topi Kain", "type": "equip", "slot": "helm", "reqLevel": 1, "price": 25, "rarity": "common", "stats": { "def": 2, "mdef": 2, "hp": 10 } },
+    "helm_iron": { "name": "Helm Besi", "type": "equip", "slot": "helm", "reqLevel": 10, "price": 250, "rarity": "uncommon", "stats": { "def": 8, "mdef": 4, "hp": 50 } },
+    "helm_knight": { "name": "Helm Ksatria", "type": "equip", "slot": "helm", "reqLevel": 22, "price": 1600, "rarity": "rare", "stats": { "def": 18, "mdef": 10, "hp": 130 } },
+    "helm_dragon": { "name": "Helm Naga", "type": "equip", "slot": "helm", "reqLevel": 36, "price": 12000, "rarity": "epic", "stats": { "def": 34, "mdef": 22, "hp": 300 } },
+
+    "armor_cloth": { "name": "Jubah Kain", "type": "equip", "slot": "armor", "reqLevel": 1, "price": 35, "rarity": "common", "stats": { "def": 3, "mdef": 3, "hp": 20 } },
+    "armor_leather": { "name": "Zirah Kulit", "type": "equip", "slot": "armor", "reqLevel": 10, "price": 350, "rarity": "uncommon", "stats": { "def": 12, "mdef": 6, "hp": 90 } },
+    "armor_chain": { "name": "Zirah Rantai", "type": "equip", "slot": "armor", "reqLevel": 22, "price": 2200, "rarity": "rare", "stats": { "def": 28, "mdef": 16, "hp": 220 } },
+    "armor_dragon": { "name": "Zirah Sisik Naga", "type": "equip", "slot": "armor", "reqLevel": 36, "price": 16000, "rarity": "epic", "stats": { "def": 52, "mdef": 34, "hp": 480 } },
+
+    "boots_cloth": { "name": "Sepatu Kain", "type": "equip", "slot": "boots", "reqLevel": 1, "price": 20, "rarity": "common", "stats": { "def": 1, "speed": 0.02 } },
+    "boots_leather": { "name": "Sepatu Kulit", "type": "equip", "slot": "boots", "reqLevel": 10, "price": 220, "rarity": "uncommon", "stats": { "def": 5, "hp": 30, "speed": 0.04 } },
+    "boots_swift": { "name": "Sepatu Angin", "type": "equip", "slot": "boots", "reqLevel": 22, "price": 1500, "rarity": "rare", "stats": { "def": 11, "hp": 80, "speed": 0.07 } },
+    "boots_dragon": { "name": "Sepatu Naga", "type": "equip", "slot": "boots", "reqLevel": 36, "price": 11000, "rarity": "epic", "stats": { "def": 22, "hp": 160, "speed": 0.1 } },
+
+    "ring_copper": { "name": "Cincin Tembaga", "type": "equip", "slot": "ring", "reqLevel": 5, "price": 120, "rarity": "common", "stats": { "atk": 2, "matk": 2, "hp": 20 } },
+    "ring_silver": { "name": "Cincin Perak", "type": "equip", "slot": "ring", "reqLevel": 15, "price": 900, "rarity": "uncommon", "stats": { "atk": 7, "matk": 7, "hp": 70, "crit": 0.01 } },
+    "ring_gold": { "name": "Cincin Emas", "type": "equip", "slot": "ring", "reqLevel": 28, "price": 5000, "rarity": "rare", "stats": { "atk": 16, "matk": 16, "hp": 180, "crit": 0.025 } },
+    "ring_dragon": { "name": "Cincin Mata Naga", "type": "equip", "slot": "ring", "reqLevel": 40, "price": 24000, "rarity": "legendary", "stats": { "atk": 34, "matk": 34, "hp": 380, "crit": 0.05 } }
+  }
+}

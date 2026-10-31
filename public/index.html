@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zomfield</title>
+<style>
+  :root { --bg:#0b0d0b; --panel:rgba(12,14,12,.82); --line:#2d3a2d; --txt:#d7e3d0; --dim:#8a9a85; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--txt); font-family:'Courier New',monospace; overflow:hidden; user-select:none; }
+  canvas#game { position:fixed; inset:0; width:100%; height:100%; image-rendering:pixelated; cursor:crosshair; }
+  .panel { background:var(--panel); border:2px solid var(--line); padding:6px 8px; }
+  #hud { position:fixed; left:10px; bottom:10px; width:230px; display:none; }
+  .bar { margin:3px 0; font-size:11px; }
+  .bar .lbl { display:flex; justify-content:space-between; color:var(--dim); }
+  .bar .trk { height:9px; background:#1a1f1a; border:1px solid #000; }
+  .bar .fill { height:100%; width:100%; transition:width .15s; }
+  #b-hp .fill { background:#c0392b; } #b-hu .fill { background:#c58b2a; }
+  #b-th .fill { background:#2f7fc1; } #b-st .fill { background:#8bc34a; }
+  #flags { font-size:11px; min-height:14px; color:#ff6b5b; }
+  #hotbar { position:fixed; left:50%; bottom:10px; transform:translateX(-50%); display:none; gap:4px; }
+  .slot { width:54px; height:54px; border:2px solid var(--line); background:var(--panel); position:relative; font-size:10px; text-align:center; padding-top:4px; overflow:hidden; }
+  .slot.sel { border-color:#e8d36a; }
+  .slot .k { position:absolute; left:2px; top:1px; color:var(--dim); font-size:9px; }
+  .slot .n { position:absolute; right:3px; bottom:2px; font-size:11px; }
+  .slot .d { position:absolute; left:0; bottom:0; height:3px; background:#8bc34a; }
+  .slot .nm { margin-top:11px; line-height:1.05; }
+  #top { position:fixed; top:10px; left:50%; transform:translateX(-50%); display:none; text-align:center; }
+  #clock { position:fixed; top:10px; right:10px; display:none; font-size:12px; text-align:right; }
+  #side { position:fixed; top:10px; left:10px; display:none; font-size:11px; color:var(--dim); line-height:1.5; }
+  #feed { position:fixed; left:10px; top:96px; font-size:11px; display:none; max-width:320px; }
+  #feed div { margin:2px 0; opacity:.95; text-shadow:1px 1px #000; }
+  #msg { position:fixed; left:50%; top:30%; transform:translateX(-50%); font-size:22px; text-shadow:2px 2px #000; text-align:center; pointer-events:none; }
+  #panelBuild, #panelCraft { position:fixed; right:10px; top:60px; width:250px; display:none; font-size:11px; max-height:70vh; overflow:auto; }
+  #panelCraft { top:auto; bottom:10px; }
+  .row { display:flex; justify-content:space-between; gap:6px; padding:3px 4px; border:1px solid transparent; cursor:pointer; }
+  .row:hover { border-color:#e8d36a; } .row.sel { border-color:#e8d36a; background:#1b2218; }
+  .row.no { color:#6a5555; }
+  #menu, #dead { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; background:rgba(0,0,0,.82); text-align:center; }
+  #dead { display:none; background:rgba(60,0,0,.72); }
+  h1 { margin:0; font-size:44px; letter-spacing:6px; color:#c0392b; text-shadow:3px 3px #000; }
+  input,button { font-family:inherit; font-size:16px; padding:8px 12px; background:#151a15; color:var(--txt); border:2px solid var(--line); }
+  button { cursor:pointer; } button:hover { border-color:#e8d36a; }
+  #help { font-size:12px; color:var(--dim); line-height:1.7; max-width:520px; }
+  #net { position:fixed; right:10px; bottom:10px; font-size:10px; color:var(--dim); display:none; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="top" class="panel"></div>
+<div id="clock" class="panel"></div>
+<div id="side"></div>
+<div id="feed"></div>
+<div id="msg"></div>
+
+<div id="hud" class="panel">
+  <div class="bar" id="b-hp"><div class="lbl"><span>HEALTH</span><span class="v"></span></div><div class="trk"><div class="fill"></div></div></div>
+  <div class="bar" id="b-hu"><div class="lbl"><span>HUNGER</span><span class="v"></span></div><div class="trk"><div class="fill"></div></div></div>
+  <div class="bar" id="b-th"><div class="lbl"><span>THIRST</span><span class="v"></span></div><div class="trk"><div class="fill"></div></div></div>
+  <div class="bar" id="b-st"><div class="lbl"><span>STAMINA</span><span class="v"></span></div><div class="trk"><div class="fill"></div></div></div>
+  <div id="flags"></div>
+</div>
+
+<div id="hotbar"></div>
+<div id="panelBuild" class="panel"></div>
+<div id="panelCraft" class="panel"></div>
+<div id="net"></div>
+
+<div id="menu">
+  <h1>ZOMFIELD</h1>
+  <div>Survive the night. Build. Fight. Together.</div>
+  <input id="name" maxlength="16" placeholder="Your name" autocomplete="off">
+  <button id="play">PLAY</button>
+  <div id="help">
+    <b>WASD</b> move &nbsp; <b>Shift</b> sprint &nbsp; <b>Mouse</b> aim &amp; attack &nbsp; <b>R</b> reload<br>
+    <b>1-9 / wheel</b> select slot &nbsp; <b>F</b> use item &nbsp; <b>E</b> pick up loot &nbsp; <b>Z</b> drop item<br>
+    <b>B</b> build menu (left click places) &nbsp; <b>C</b> crafting<br>
+    <b>G</b> open/close gate &nbsp; <b>X</b> repair &nbsp; <b>V</b> dismantle (nearest structure)<br>
+    Axe/bat on trees and rocks gathers wood and stone. Nights are dark and deadly: build, light torches, stay together.
+  </div>
+  <div id="connmsg"></div>
+</div>
+
+<div id="dead">
+  <h1>YOU DIED</h1>
+  <div id="deadcause"></div>
+  <div id="deadtimer"></div>
+</div>
+
+<script src="client.js"></script>
+</body>
+</html>

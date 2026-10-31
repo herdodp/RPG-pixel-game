@@ -1,0 +1,29 @@
+{
+  "server": { "port": 3100, "tickRate": 20, "snapshotRate": 10, "maxPlayers": 100, "saveIntervalSec": 30 },
+  "world": { "width": 7200, "height": 7200, "tileSize": 32, "spawn": { "x": 2400, "y": 2400 } },
+  "network": { "interestRadius": 720 },
+  "dayNight": { "dayLengthSec": 720, "nightStart": 0.7, "nightEnd": 0.95, "startTime": 0.3 },
+  "player": {
+    "baseSpeed": 96,
+    "radius": 8,
+    "maxLevel": 50,
+    "inventorySlots": 30,
+    "startGold": 100,
+    "respawnDelayMs": 4000,
+    "deathXpLossPct": 0.05,
+    "hpRegenPerSec": 0.8,
+    "mpRegenPerSec": 1.2,
+    "outOfCombatMs": 6000,
+    "startingItems": { "hp_potion_s": 5, "mp_potion_s": 3 }
+  },
+  "xp": { "base": 60, "growth": 1.22, "levelDiffPenaltyPerLevel": 0.12, "minLevelDiffMul": 0.1 },
+  "combat": { "basicAttackCooldownMs": 650, "critMultiplier": 1.6, "globalSkillCooldownMs": 500, "pvp": false },
+  "raid": {
+    "minContributionPct": 0.02,
+    "announceRadius": 99999,
+    "lastHitBonusGold": 500
+  },
+  "shop": { "sellRatio": 0.4 },
+  "chat": { "maxLength": 120, "cooldownMs": 800 },
+  "ai": { "monsterAggroMul": 0.55 }
+}

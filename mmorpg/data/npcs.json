@@ -1,0 +1,42 @@
+{
+  "npcs": [
+    {
+      "id": "merchant_town",
+      "name": "Pedagang Budi",
+      "role": "shop",
+      "x": 2330, "y": 2330,
+      "color": "#e8c46a",
+      "greeting": "Selamat datang, petualang! Lihat dagangan saya.",
+      "stock": [
+        "hp_potion_s", "hp_potion_m", "hp_potion_l",
+        "mp_potion_s", "mp_potion_m", "mp_potion_l"
+      ]
+    },
+    {
+      "id": "smith_town",
+      "name": "Pandai Besi Joko",
+      "role": "shop",
+      "x": 2470, "y": 2330,
+      "color": "#c0392b",
+      "greeting": "Senjata dan zirah terbaik ada di sini.",
+      "stock": [
+        "sword_wood", "sword_iron", "sword_steel",
+        "staff_wood", "staff_oak", "staff_crystal",
+        "bow_short", "bow_hunter", "bow_long",
+        "dagger_rusty", "dagger_steel", "dagger_viper",
+        "helm_cloth", "helm_iron", "helm_knight",
+        "armor_cloth", "armor_leather", "armor_chain",
+        "boots_cloth", "boots_leather", "boots_swift",
+        "ring_copper", "ring_silver"
+      ]
+    },
+    {
+      "id": "healer_town",
+      "name": "Tabib Sari",
+      "role": "healer",
+      "x": 2400, "y": 2470,
+      "color": "#5ec26a",
+      "greeting": "Biar kusembuhkan lukamu."
+    }
+  ]
+}

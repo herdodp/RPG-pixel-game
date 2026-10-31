@@ -1,0 +1,72 @@
+{
+  "warrior": {
+    "name": "Prajurit",
+    "desc": "Petarung jarak dekat dengan HP dan pertahanan tinggi.",
+    "color": "#c0392b",
+    "weaponType": "sword",
+    "base": { "hp": 140, "mp": 40, "atk": 12, "matk": 2, "def": 8, "mdef": 3, "crit": 0.05, "speed": 1.0 },
+    "growth": { "hp": 22, "mp": 3, "atk": 2.4, "matk": 0.3, "def": 1.6, "mdef": 0.6, "crit": 0.0008 },
+    "basic": { "range": 40, "arcDeg": 100, "type": "melee", "stat": "atk", "mult": 1.0 },
+    "skills": [
+      { "id": "war_slash", "name": "Tebasan Keras", "level": 1, "mp": 8, "cooldownMs": 3000, "type": "melee", "range": 46, "arcDeg": 120, "stat": "atk", "mult": 1.9, "fx": "slash" },
+      { "id": "war_whirl", "name": "Putaran Maut", "level": 8, "mp": 18, "cooldownMs": 8000, "type": "aoe", "radius": 70, "stat": "atk", "mult": 2.2, "fx": "whirl" },
+      { "id": "war_roar", "name": "Raungan Perang", "level": 15, "mp": 24, "cooldownMs": 25000, "type": "buff", "buff": { "id": "roar", "stat": "atk", "mul": 1.35, "ms": 12000 }, "fx": "buff" }
+    ]
+  },
+  "mage": {
+    "name": "Penyihir",
+    "desc": "Sihir api dan es dengan damage area besar, tetapi rapuh.",
+    "color": "#8e44ad",
+    "weaponType": "staff",
+    "base": { "hp": 85, "mp": 110, "atk": 3, "matk": 14, "def": 3, "mdef": 8, "crit": 0.05, "speed": 1.0 },
+    "growth": { "hp": 12, "mp": 10, "atk": 0.4, "matk": 2.7, "def": 0.7, "mdef": 1.5, "crit": 0.0008 },
+    "basic": { "range": 210, "type": "projectile", "stat": "matk", "mult": 0.9, "speed": 320, "color": "#9b6bff" },
+    "skills": [
+      { "id": "mage_fireball", "name": "Bola Api", "level": 1, "mp": 12, "cooldownMs": 2500, "type": "projectile", "range": 260, "stat": "matk", "mult": 2.0, "speed": 300, "radius": 50, "color": "#ff7a1a", "fx": "fire" },
+      { "id": "mage_frost", "name": "Ledakan Es", "level": 8, "mp": 28, "cooldownMs": 9000, "type": "aoe", "radius": 90, "stat": "matk", "mult": 2.4, "slow": { "factor": 0.5, "ms": 3000 }, "fx": "frost" },
+      { "id": "mage_meteor", "name": "Hujan Meteor", "level": 18, "mp": 55, "cooldownMs": 22000, "type": "aoe_target", "range": 240, "radius": 100, "stat": "matk", "mult": 4.2, "fx": "meteor" }
+    ]
+  },
+  "archer": {
+    "name": "Pemanah",
+    "desc": "Serangan jarak jauh cepat dengan peluang kritikal tinggi.",
+    "color": "#27ae60",
+    "weaponType": "bow",
+    "base": { "hp": 100, "mp": 60, "atk": 11, "matk": 2, "def": 4, "mdef": 4, "crit": 0.12, "speed": 1.05 },
+    "growth": { "hp": 15, "mp": 5, "atk": 2.2, "matk": 0.3, "def": 0.9, "mdef": 0.9, "crit": 0.0012 },
+    "basic": { "range": 240, "type": "projectile", "stat": "atk", "mult": 0.85, "speed": 420, "color": "#d9c27a" },
+    "skills": [
+      { "id": "arc_power", "name": "Tembakan Kuat", "level": 1, "mp": 8, "cooldownMs": 3000, "type": "projectile", "range": 300, "stat": "atk", "mult": 2.1, "speed": 480, "radius": 12, "color": "#f1e08a", "fx": "arrow" },
+      { "id": "arc_volley", "name": "Hujan Panah", "level": 8, "mp": 22, "cooldownMs": 9000, "type": "aoe_target", "range": 260, "radius": 80, "stat": "atk", "mult": 2.3, "fx": "volley" },
+      { "id": "arc_focus", "name": "Fokus Mata Elang", "level": 15, "mp": 20, "cooldownMs": 24000, "type": "buff", "buff": { "id": "focus", "stat": "crit", "add": 0.3, "ms": 12000 }, "fx": "buff" }
+    ]
+  },
+  "cleric": {
+    "name": "Pendeta",
+    "desc": "Penyembuh andalan party, juga mampu menyerang dengan sihir suci.",
+    "color": "#f1c40f",
+    "weaponType": "staff",
+    "base": { "hp": 110, "mp": 100, "atk": 4, "matk": 11, "def": 5, "mdef": 9, "crit": 0.04, "speed": 1.0 },
+    "growth": { "hp": 16, "mp": 9, "atk": 0.5, "matk": 2.1, "def": 1.1, "mdef": 1.8, "crit": 0.0006 },
+    "basic": { "range": 190, "type": "projectile", "stat": "matk", "mult": 0.8, "speed": 300, "color": "#fff3a0" },
+    "skills": [
+      { "id": "cle_smite", "name": "Hantaman Suci", "level": 1, "mp": 10, "cooldownMs": 2800, "type": "projectile", "range": 230, "stat": "matk", "mult": 1.9, "speed": 320, "radius": 14, "color": "#fff3a0", "fx": "holy" },
+      { "id": "cle_heal", "name": "Cahaya Penyembuh", "level": 5, "mp": 22, "cooldownMs": 6000, "type": "heal_aoe", "radius": 130, "stat": "matk", "mult": 2.6, "fx": "heal" },
+      { "id": "cle_bless", "name": "Berkah Dewa", "level": 14, "mp": 30, "cooldownMs": 28000, "type": "buff_aoe", "radius": 150, "buff": { "id": "bless", "stat": "def", "mul": 1.4, "ms": 15000 }, "fx": "buff" }
+    ]
+  },
+  "rogue": {
+    "name": "Pembunuh",
+    "desc": "Serangan cepat berdarah dingin dengan kritikal mematikan.",
+    "color": "#34495e",
+    "weaponType": "dagger",
+    "base": { "hp": 105, "mp": 55, "atk": 11, "matk": 2, "def": 5, "mdef": 4, "crit": 0.15, "speed": 1.12 },
+    "growth": { "hp": 16, "mp": 4, "atk": 2.3, "matk": 0.3, "def": 1.0, "mdef": 0.8, "crit": 0.0014 },
+    "basic": { "range": 30, "arcDeg": 90, "type": "melee", "stat": "atk", "mult": 0.75, "cooldownMs": 420 },
+    "skills": [
+      { "id": "rog_stab", "name": "Tusukan Bayangan", "level": 1, "mp": 8, "cooldownMs": 2600, "type": "melee", "range": 36, "arcDeg": 70, "stat": "atk", "mult": 2.0, "critBonus": 0.25, "fx": "stab" },
+      { "id": "rog_dash", "name": "Lompatan Bayangan", "level": 8, "mp": 16, "cooldownMs": 8000, "type": "dash", "distance": 110, "stat": "atk", "mult": 1.6, "range": 40, "fx": "dash" },
+      { "id": "rog_poison", "name": "Racun Maut", "level": 15, "mp": 26, "cooldownMs": 20000, "type": "buff", "buff": { "id": "poison", "stat": "atk", "mul": 1.4, "ms": 12000 }, "fx": "buff" }
+    ]
+  }
+}

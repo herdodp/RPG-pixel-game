@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang='id'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'>
+<title>Tanah Legenda - MMORPG Pixel</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0b100c;overflow:hidden;font-family:'Courier New',ui-monospace,monospace;color:#e8efe6;user-select:none}
+canvas{display:block;width:100vw;height:100vh;image-rendering:pixelated;image-rendering:crisp-edges}
+.panel{background:rgba(16,24,20,.93);border:2px solid #2d3d33;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.hide{display:none!important}
+.btn{background:#f5c842;color:#1a1a10;border:0;border-radius:8px;padding:7px 14px;font:bold 13px 'Courier New',monospace;cursor:pointer}
+.btn:hover{background:#ffd95e}
+.btn.alt{background:#2d3d33;color:#e8efe6}
+.btn.alt:hover{background:#3b5043}
+.btn.sm{padding:3px 8px;font-size:11px}
+#auth{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%,#1d3a22,#07100a);z-index:50;overflow:auto}
+#authbox{width:min(560px,94vw);padding:22px;margin:12px}
+#authbox h1{margin:0 0 4px;font-size:26px;color:#f5c842;letter-spacing:1px;text-align:center}
+#authbox p.sub{margin:0 0 14px;text-align:center;color:#9fb3a4;font-size:12px}
+#authbox input{width:100%;padding:9px;margin:4px 0;background:#0c1410;border:2px solid #2d3d33;border-radius:8px;color:#fff;font:14px 'Courier New',monospace;outline:0}
+#authbox input:focus{border-color:#f5c842}
+#classes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0}
+.cls{padding:6px 2px;border:2px solid #2d3d33;border-radius:8px;text-align:center;cursor:pointer;background:#0c1410;font-size:11px}
+.cls canvas{width:48px;height:48px;display:block;margin:0 auto 3px}
+.cls.sel{border-color:#f5c842;background:#1d2a20}
+#clsdesc{font-size:12px;color:#b9c9bd;min-height:34px;margin-bottom:8px}
+#autherr{color:#ff7a6a;font-size:12px;min-height:16px;margin:4px 0}
+.row{display:flex;gap:8px}.row .btn{flex:1}
+#top{position:fixed;top:6px;left:6px;padding:6px 10px;display:flex;flex-direction:column;gap:2px;align-items:flex-start;font-size:11px;width:max-content;max-width:170px;line-height:1.35}
+#top #zone{font-size:12px}
+#top b{color:#f5c842;font-size:14px}
+#top .dim{color:#9fb3a4}
+#bars{position:fixed;left:6px;bottom:6px;width:230px;padding:8px}
+.bar{position:relative;height:16px;background:#0a0f0c;border:1px solid #2d3d33;border-radius:4px;margin:3px 0;overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:0}
+.bar span{position:absolute;inset:0;text-align:center;font-size:11px;line-height:15px;text-shadow:0 1px 2px #000}
+#hpf{background:linear-gradient(#e0483a,#a32b22)}#mpf{background:linear-gradient(#4a8be2,#2a55a3)}#xpf{background:linear-gradient(#c9a227,#8a6e12)}
+#lvl{font-size:13px;color:#f5c842;margin-bottom:2px}
+#hotbar{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);padding:6px;display:flex;gap:5px}
+.slot{position:relative;width:46px;height:46px;background:#0c1410;border:2px solid #2d3d33;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;text-align:center;cursor:pointer;overflow:hidden}
+.slot .key{position:absolute;top:1px;left:3px;font-size:9px;color:#f5c842}
+.slot .cd{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.72);height:0}
+.slot .nm{padding:0 2px;line-height:1.05;color:#dfe8e0}
+.slot .qty{position:absolute;right:2px;bottom:1px;font-size:10px;color:#fff;text-shadow:0 1px 2px #000}
+.slot.lock{opacity:.4}
+#bossbar{position:fixed;top:48px;left:50%;transform:translateX(-50%);width:min(440px,60vw);padding:6px 10px;text-align:center}
+#bossname{font-size:13px;color:#ff9a6a;margin-bottom:3px}
+#bossbar .bar{height:14px}#bossf{background:linear-gradient(#e0483a,#7a1a14)}
+#log{position:fixed;right:8px;top:48px;width:240px;font-size:11px;pointer-events:none;text-align:right}
+#log div{background:rgba(10,15,12,.75);margin:2px 0;padding:3px 6px;border-radius:5px;animation:fade 7s forwards}
+@keyframes fade{0%,80%{opacity:1}100%{opacity:0}}
+#chat{position:fixed;left:6px;bottom:112px;width:300px}
+#chatlog{max-height:120px;overflow:hidden;font-size:11px;padding:4px 6px;background:rgba(10,15,12,.6);border-radius:6px;display:flex;flex-direction:column;justify-content:flex-end}
+#chatlog div{margin:1px 0;word-break:break-word}#chatlog b{color:#f5c842}
+#chatin{width:100%;margin-top:3px;padding:5px;background:rgba(10,15,12,.85);border:2px solid #2d3d33;border-radius:6px;color:#fff;font:12px 'Courier New',monospace;outline:0}
+#toolbtns{position:fixed;right:6px;bottom:8px;display:flex;gap:5px}
+#toast{position:fixed;top:90px;left:50%;transform:translateX(-50%);padding:7px 14px;font-size:13px;color:#ffd95e;pointer-events:none;opacity:0;transition:opacity .25s}
+#dead{position:fixed;inset:0;background:rgba(120,10,10,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:28px;color:#fff;z-index:20;text-shadow:0 2px 6px #000}
+#dead small{font-size:14px;margin-top:8px}
+.win{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(620px,96vw);max-height:90vh;overflow:auto;padding:12px;z-index:30}
+.win h3{margin:0 0 8px;color:#f5c842;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+.cols{display:flex;gap:12px;flex-wrap:wrap}.cols>div{flex:1;min-width:230px}
+#invgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+#eqgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:8px}
+.it{position:relative;aspect-ratio:1;background:#0c1410;border:2px solid #2d3d33;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;text-align:center;cursor:pointer;overflow:hidden;line-height:1.05}
+.it:hover{background:#1d2a20}
+.it .qty{position:absolute;right:2px;bottom:1px;font-size:10px;color:#fff;text-shadow:0 1px 2px #000}
+.it .sl{position:absolute;top:1px;left:2px;font-size:8px;color:#7d9486}
+#stats{font-size:12px;line-height:1.5}#stats b{color:#f5c842}
+#tip{margin-top:8px;font-size:11px;min-height:70px;padding:6px;background:#0c1410;border-radius:6px;color:#cdd9d0}
+#shoplist{display:flex;flex-direction:column;gap:4px;max-height:300px;overflow:auto}
+.shoprow{display:flex;justify-content:space-between;align-items:center;background:#0c1410;border-radius:6px;padding:4px 8px;font-size:12px;gap:6px}
+#board{font-size:12px}#board div{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #22302a}
+.qrow{background:#0c1410;border:2px solid #2d3d33;border-radius:6px;padding:6px 8px;margin-bottom:5px;font-size:12px}
+.qrow.ready{border-color:#f5c842}.qrow.lock{opacity:.5}
+.qrow .qn{color:#f5c842;font-weight:bold}.qrow .qd{color:#b9c9bd;font-size:11px;margin:2px 0}
+.qrow .qp{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:11px}
+.qbar{height:6px;background:#0a0f0c;border-radius:3px;overflow:hidden;margin:3px 0}.qbar i{display:block;height:100%;background:#c9a227}
+.tabs{display:flex;gap:5px;margin-bottom:8px}
+.prow{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #22302a;font-size:12px}.prow b{color:#f5c842}
+.sk{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.pips{display:flex;gap:3px}.pips i{width:10px;height:10px;border:1px solid #2d3d33;background:#0a0f0c;display:block}.pips i.on{background:#f5c842}
+#help{position:fixed;right:8px;bottom:56px;font-size:10px;color:#9fb3a4;text-align:right;pointer-events:none;line-height:1.4}
+</style>
+</head>
+<body>
+<canvas id='game'></canvas>
+
+<div id='auth'>
+  <div id='authbox' class='panel'>
+    <h1>TANAH LEGENDA</h1>
+    <p class='sub'>MMORPG pixel online - pilih class, gilirkan level, kalahkan raid boss</p>
+    <input id='nm' placeholder='Nama karakter (3-16: huruf/angka/_)' maxlength='16' autocomplete='username'>
+    <input id='pw' type='password' placeholder='Password (min. 4 karakter)' maxlength='64' autocomplete='current-password'>
+    <div style='font-size:12px;color:#9fb3a4;margin-top:8px'>Pilih class (hanya untuk akun baru):</div>
+    <div id='classes'></div>
+    <div id='clsdesc'></div>
+    <div id='autherr'></div>
+    <div class='row'><button class='btn' id='btnLogin'>Masuk</button><button class='btn alt' id='btnReg'>Buat Karakter</button></div>
+  </div>
+</div>
+
+<div id='hud' class='hide'>
+  <div id='top' class='panel'><span id='zone'><b>-</b></span><span class='dim' id='coord'></span><span id='clock'></span><span class='dim' id='online'></span></div>
+  <div id='bossbar' class='panel hide'><div id='bossname'></div><div class='bar'><i id='bossf'></i><span id='bosstxt'></span></div></div>
+  <div id='log'></div>
+  <div id='chat'><div id='chatlog'></div><input id='chatin' class='hide' maxlength='120' placeholder='Ketik pesan lalu Enter'></div>
+  <div id='bars' class='panel'>
+    <div id='lvl'>-</div>
+    <div class='bar'><i id='hpf'></i><span id='hptxt'></span></div>
+    <div class='bar'><i id='mpf'></i><span id='mptxt'></span></div>
+    <div class='bar'><i id='xpf'></i><span id='xptxt'></span></div>
+    <div style='font-size:12px;margin-top:3px'>Emas: <b id='gold' style='color:#f5c842'>0</b></div>
+  </div>
+  <div id='hotbar' class='panel'></div>
+  <div id='toolbtns'>
+    <button class='btn alt sm' id='bMap'>Peta (M)</button>
+    <button class='btn alt sm' id='bAuto'>Auto (T): OFF</button>
+    <button class='btn alt sm' id='bProf'>Profil (P)</button>
+    <button class='btn alt sm' id='bQuest'>Quest (J)</button>
+    <button class='btn alt sm' id='bSkill'>Skill (K)</button>
+    <button class='btn alt sm' id='bInv'>Tas (I)</button>
+    <button class='btn alt sm' id='bBoard'>Peringkat (L)</button>
+  </div>
+  <div id='help'>WASD/Panah: jalan - Spasi/Klik: serang - 1-3: skill - Q/E: ramuan HP/MP<br>F: ambil/bicara NPC - I: tas - P: profil - J: quest - K: skill - T: auto battle - M: peta - N: minimap - L: peringkat - Enter: chat</div>
+  <div id='toast' class='panel'></div>
+  <div id='dead' class='hide'>Kamu Gugur<small id='deadinfo'></small></div>
+
+  <div id='invwin' class='win panel hide'>
+    <h3><span>Tas &amp; Perlengkapan</span><button class='btn sm alt' data-close='invwin'>X</button></h3>
+    <div class='cols'>
+      <div><div style='font-size:11px;color:#9fb3a4;margin-bottom:3px'>Terpasang</div><div id='eqgrid'></div><div id='stats'></div></div>
+      <div><div style='font-size:11px;color:#9fb3a4;margin-bottom:3px'>Inventaris (klik: pakai/pasang - klik kanan: buang)</div><div id='invgrid'></div><div id='tip'>Arahkan ke item untuk detail.</div></div>
+    </div>
+  </div>
+
+  <div id='shopwin' class='win panel hide'>
+    <h3><span id='shoptitle'>Toko</span><button class='btn sm alt' data-close='shopwin'>X</button></h3>
+    <div id='shopgreet' style='font-size:12px;color:#b9c9bd;margin-bottom:6px'></div>
+    <div class='cols'>
+      <div><div style='font-size:11px;color:#9fb3a4;margin-bottom:3px'>Dijual</div><div id='shoplist'></div></div>
+      <div><div style='font-size:11px;color:#9fb3a4;margin-bottom:3px'>Tasmu (klik untuk jual)</div><div id='sellgrid' style='display:grid;grid-template-columns:repeat(6,1fr);gap:4px'></div></div>
+    </div>
+  </div>
+
+  <div id='profwin' class='win panel hide' style='width:min(420px,96vw)'>
+    <h3><span>Profil Petualang</span><button class='btn sm alt' data-close='profwin'>X</button></h3>
+    <div id='profbody'></div>
+  </div>
+
+  <div id='questwin' class='win panel hide' style='width:min(520px,96vw)'>
+    <h3><span>Quest</span><button class='btn sm alt' data-close='questwin'>X</button></h3>
+    <div id='questbody'></div>
+  </div>
+
+  <div id='skillwin' class='win panel hide' style='width:min(460px,96vw)'>
+    <h3><span>Pohon Skill</span><button class='btn sm alt' data-close='skillwin'>X</button></h3>
+    <div id='skillbody'></div>
+  </div>
+
+  <div id='mapwin' class='win panel hide' style='width:min(660px,96vw)'>
+    <h3><span>Peta Dunia</span><button class='btn sm alt' data-close='mapwin'>X</button></h3>
+    <canvas id='mapcv' width='600' height='600' style='width:100%;max-width:600px;height:auto;aspect-ratio:1;display:block;margin:0 auto;border:2px solid #2d3d33;border-radius:6px;image-rendering:pixelated'></canvas>
+    <div style='font-size:11px;color:#9fb3a4;margin-top:6px;text-align:center'>Kuning: kamu/NPC - Merah: boss - Biru: pemain lain - Tekan M atau Esc untuk menutup</div>
+  </div>
+
+  <div id='boardwin' class='win panel hide' style='width:min(380px,96vw)'>
+    <h3><span>Peringkat Petualang</span><button class='btn sm alt' data-close='boardwin'>X</button></h3>
+    <div id='board'>Memuat...</div>
+  </div>
+</div>
+<script src='client.js'></script>
+</body>
+</html>
